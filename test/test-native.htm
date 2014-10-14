@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<meta charset="utf-8">
+	<title>Native position sticky test</title>
+	<style>
+		body {font: 1em/1.5 sans-serif; margin: 0; padding: 0;}
+
+		/* A large container to give us some scrolling*/
+		.main-container { width: 2000px; height: 2000px; }
+
+		.nav-sticky {top: 0; position: -webkit-sticky; position: sticky; background: red; height: 50px;} 
+
+		.sticky-container { 
+			width: 300px; 
+			margin: 200px auto; 
+			height: 300px; 
+			border: 10px solid red; 
+			padding: 5px;
+		}
+
+		.sticky {top: 10%; position: -webkit-sticky; position: sticky;} 
+
+		@media (max-width: 500px) {
+			.sticky {top: auto;}
+		}
+
+	</style>
+
+<body>
+
+	<div class="main-container">
+		<form>
+
+			<nav class="nav-sticky"></nav>
+			<div class="sticky-container">
+
+
+
+				<p>Lorem ipsum
+
+				<div class="sticky js-make-sticky">Make sticky</div>
+
+				<p>Lorem ipsum
+
+			</div>
+		</form>
+
+
+	</div>
+
+
+
+
