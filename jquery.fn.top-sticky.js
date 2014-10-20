@@ -119,6 +119,11 @@
 		var elResizing = false;
 		var $parent;
 
+		// Don't add it twice
+		if ( $.data( el, dataName ) ) {
+			return;
+		}
+
 		// Reset back to the elements natural position
 		function reset() {
 			$el.attr('style','');
@@ -304,7 +309,7 @@
 		return this;
 	}
 
-	stickify.supportsSticky = nativeSupport;
+	stickify.support = nativeSupport;
 	$.fn.stickify = stickify;
 
 	$.fn.unstickify = function() {
