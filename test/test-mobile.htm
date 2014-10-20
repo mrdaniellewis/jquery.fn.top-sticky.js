@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<meta charset="utf-8">
+	<title>Position sticky test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {font: 1em/1.5 sans-serif; margin: 0; padding: 0;}
+
+		/* A large container to give us some scrolling*/
+		.main-container {}
+
+		.nav-sticky {top: 0; background: red; height: 50px; position: -webkit-sticky; position: sticky; } 
+
+		.sticky-container { 
+			width: 300px; 
+			margin: 200px auto; 
+			height: 300px; 
+			border: 10px solid red; 
+			padding: 5px;
+		}
+
+		.sticky {top: 10%; position: -webkit-sticky; position: sticky;}
+
+	</style>
+
+<body>
+
+	<div class="main-container">
+
+		<nav class="nav-sticky js-make-sticky"></nav>
+
+		<p>Has support: <span id="js-has-support"></span>
+
+		<p>Uses native or the polyfill depending on support
+
+		<div class="sticky-container">
+
+			<p>Lorem ipsum
+
+			<div class="sticky js-make-sticky">Make sticky</div>
+
+			<p>Lorem ipsum
+
+		</div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.11.0.js"></script>
+	<script src="../jquery.fn.top-sticky.js"></script>
+	<script>
+		$('#js-has-support').text($.fn.stickify.support);
+
+		if ( !$.fn.stickify.support ) {
+			$('.js-sticky').stickify();
+		}
+	</script>
+
+

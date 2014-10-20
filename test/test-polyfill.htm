@@ -8,7 +8,7 @@
 		/* A large container to give us some scrolling*/
 		.main-container { width: 2000px; height: 2000px; }
 
-		.nav-sticky {top: 0; background: red; height: 50px;} 
+		.nav-sticky {top: 0; background: red; height: 50px; position: -webkit-sticky; position: sticky; } 
 
 		.sticky-container { 
 			width: 300px; 
@@ -18,7 +18,7 @@
 			padding: 5px;
 		}
 
-		.sticky {top: 10%; }
+		.sticky {top: 10%; position: -webkit-sticky; position: sticky;}
 
 		@media (max-width: 500px) {
 			.sticky {top: auto;}
@@ -32,8 +32,10 @@
 
 		<nav class="nav-sticky js-make-sticky"></nav>
 
-		<p>Uses the polyfill regardless of native support
+		<p>Has support: <span id="js-has-support"></span>
 
+		<p>Uses native or the polyfill depending on support
+		
 		<p>The effect is only shown if the width > 500px;
 
 		<div class="sticky-container">
@@ -53,7 +55,9 @@
 	<script src="https://code.jquery.com/jquery-1.11.0.js"></script>
 	<script src="../jquery.fn.top-sticky.js"></script>
 	<script>
-		$('.js-make-sticky').stickify();
+		if ( !$.fn.stickify.support ) {
+			$('.js-sticky').stickify();
+		}
 	</script>
 
 
