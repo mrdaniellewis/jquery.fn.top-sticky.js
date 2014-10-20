@@ -28,12 +28,30 @@ This works in IE8 plus.  It possibly also works in IE7.
 
 On a mobile some sort of `position: fixed` support is required which might limit the effectiveness.
 
-Note that many mobiles only run scroll events after a scroll has finished.  This means the effect won't
-nearly be as nice.  On mobile safari you can use native, prefixed, position sticky to get round this.
+Note that some [mobile browsers](http://www.quirksmode.org/mobile/tableTouch.html) only run scroll events 
+once after a scroll has finished.  This means the effect won't nearly be as nice.  On mobile safari you can use native, prefixed, position sticky to get round this.  Otherwise you find firing scroll events using a
+touch move event works, maybe.
 
 ## Usage
 
-Assuming your CSS also contains native support:
+Create an element to be sticky
+```html
+<div class="js-sticky sticky">
+	Foo bar
+</div>
+```
+
+Add some CSS for native support and to set the value of top
+
+```css
+.sticky {
+	top: 1em; 
+	position: -webkit-sticky; 
+	position: sticky;
+}
+
+```
+Add the polyfill to the element.
 
 ```js
 if ( !$.fn.stickfiy.support ) {
