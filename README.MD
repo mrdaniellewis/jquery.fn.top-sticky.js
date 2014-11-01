@@ -28,9 +28,9 @@ It uses inline styles to position the element.  Any inline styles that are alrea
 
 This works in IE8 plus.  It possibly also works in IE7.
 
-On a mobile some sort of `position: fixed` support is required which might limit the effectiveness.
+On a mobile some sort of `position: fixed` support is required which might limit the effectiveness.  It is probably best to turn the effect off on mobiles using media queries.
 
-If avalible, particularly on iOS, always use the native version as it works a lot better on mobiles.
+If avalible, particularly on iOS, always use the native sticky positioning as it works a lot better.
 
 On iOS7 and some other browers the repositioning can only happen at the end of a scroll event, which kind of ruins the effect.  See [mobile support for the scroll event](http://www.quirksmode.org/mobile/tableTouch.html)
 
@@ -81,6 +81,8 @@ For some HTML this might be problematic.  In that case you can do the following 
 ```js
 $('.js-sticky').stickfiy($('.container'));
 ```
+
+Note that this works terribly on an iphone and only tollerably on an ipad due to issues with how iOS handles fixed positioning.
 
 ### Notes
 
