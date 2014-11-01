@@ -10,6 +10,8 @@ It reads the value of "top" directly from the CSS and supports this value being 
 
 It can test if the browser nativly supports position sticky.
 
+You can specifiy which element the stickyness should be contained within.  For native position sticky it is always contained within the parent element.
+
 ## What it doesn't do
 
 It doesn't support "bottom", "left" or "right" stickyness.
@@ -29,8 +31,13 @@ This works in IE8 plus.  It possibly also works in IE7.
 On a mobile some sort of `position: fixed` support is required which might limit the effectiveness.
 
 Note that some [mobile browsers](http://www.quirksmode.org/mobile/tableTouch.html) only run scroll events 
-once after a scroll has finished.  This means the effect won't nearly be as nice.  On mobile safari you can use native, prefixed, position sticky to get round this.  Otherwise you find firing scroll events using a
-touch move event works, maybe.
+once after a scroll has finished.  This means the effect won't nearly be as nice.  On mobile safari you can use native, prefixed, position sticky to get round this.  If this is an issue the following untested code might work.
+
+```js
+$(document).on('touchmove', function() {
+	$stickyElement.trigger('scroll');
+} );
+```
 
 ## Usage
 
@@ -63,6 +70,16 @@ Remove the behavior with:
 
 ```js
 $('.js-sticky').unstickfiy();
+```
+
+### Specifiying the container
+
+For the native position sticky the element is contained within its parent (and not its offset parent like absolute positioning).
+
+For some HTML this might be problematic.  In that case you can do the following and not use the native effect in any browser.
+
+```js
+$('.js-sticky').stickfiy($('.container'));
 ```
 
 ### Notes

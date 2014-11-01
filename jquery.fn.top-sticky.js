@@ -1,7 +1,7 @@
 /* jshint laxbreak: true */
 
 /*!
- * jQuery.fn.top-sticky.js v0.1
+ * jQuery.fn.top-sticky.js v0.2
  * © 2014 Daniel Lewis github.com/mrdaniellewis/jquery.fn.top-sticky.js
  * MIT license
  */
@@ -104,10 +104,7 @@
 
 	// Creates the functions and holds the values for moving an element
 	// A closure, while less readable, minifies rather better
-	function makeStickyClosure() {
-		/* jshint -W040 */
-		var el = this;
-		/* jshint +W040 */
+	function makeStickyClosure(el, parent) {
 		var $el = $(el);
 		
 		var lastPosition = '';
@@ -146,7 +143,7 @@
 				
 				if ( $el.is(':visible') ) {
 
-					$parent = $el.parent();
+					$parent = parent ? $(parent) : $el.parent();
 					windowHeight = $window.height();
 
 					// Reset original size and position
@@ -303,9 +300,11 @@
 		return val;
 	}
 
-	function stickify() {
+	function stickify(parent) {
 		/* jshint -W040 */
-		this.each(makeStickyClosure);
+		this.each(function() {
+			makeStickyClosure(this,parent);
+		} );
 		return this;
 	}
 

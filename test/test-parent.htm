@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<meta charset="utf-8">
+	<title>Position sticky test</title>
+	<style>
+		body {font: 1em/1.5 sans-serif; margin: 0; padding: 0;}
+
+		/* A large container to give us some scrolling*/
+		.main-container { width: 2000px; height: 2000px; }
+
+		.nav-sticky {top: 0; background: red; height: 50px;} 
+
+		.sticky-container { 
+			width: 300px; 
+			margin: 200px auto; 
+			height: 300px; 
+			border: 10px solid red; 
+			padding: 5px;
+		}
+
+		.sub-container {
+			height: 800px;
+			border: 1px solid green;
+		}
+
+		.sticky {top: 10%; }
+
+		@media (max-width: 500px) {
+			.sticky {top: auto;}
+		}
+
+	</style>
+
+<body>
+
+	<div class="main-container">
+
+		<nav class="nav-sticky js-make-sticky"></nav>
+
+		<div class="sub-container">
+
+			<p>Uses the polyfill regardless of native support
+
+			<p>The effect is only shown if the width > 500px;
+
+			<div class="sticky-container">
+
+				<p>Lorem ipsum
+
+				<div class="sticky js-make-sticky">Make sticky</div>
+
+				<p>Lorem ipsum
+
+			</div>
+		<div>
+
+
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.11.0.js"></script>
+	<script src="../jquery.fn.top-sticky.js"></script>
+	<script>
+		$('.js-make-sticky').stickify($('.sub-container'));
+	</script>
+
+
