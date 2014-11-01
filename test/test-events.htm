@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<style>
-			body {font: 1em/1.5 sans-serif; margin: 0; padding: 0;}
+			body {font: 1em/1.5 sans-serif; margin: 0; padding: 0; height: 5000px;}
 
 			.scrollwatch {
 				position: fixed;
@@ -31,6 +31,8 @@
 		<span id="touchwatch"></span>
 		<br>
 		<span id="other"></span>
+		<br>
+		<span id="scrolltop"></span>
 	</div>
 
 	<p>Tests when a browser fires scroll, touchmove and animation frame events
@@ -76,7 +78,7 @@
 				|| function(fn) {
 					return setTimeout( fn, 0 ); // 0 results in less positioning errors and a smoother appearance
 				};
-			
+
 			var animateOn = false;
 			var waiting = false;
 			var timeout;
@@ -99,6 +101,8 @@
 				$('#anwatch')[0].innerHTML = 'an ' + (aniCount++);
 				var currentTop = $(window).scrollTop();
 				
+				$('#scrolltop')[0].innerHTML = 'scrolltop=' + currentTop;
+
 				if ( currentTop != top ) {
 					top = currentTop;
 					requestAnimationFrame(animationFrame);
@@ -113,11 +117,7 @@
 				$('#scrollwatch')[0].innerHTML = 'scroll ' + (count++);
 				
 				$('#other')[0].innerHTML = 'on';
-				/*clearTimeout(timeout);
-				timeout = setTimeout(function(){
-					animateOn = false;
-					$('#other')[0].innerHTML = 'off';
-				},10);*/
+
 				if ( !animateOn ) {
 					$('#other')[0].innerHTML = 'on';
 					requestAnimationFrame(animationFrame);

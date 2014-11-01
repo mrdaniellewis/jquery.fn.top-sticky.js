@@ -30,14 +30,9 @@ This works in IE8 plus.  It possibly also works in IE7.
 
 On a mobile some sort of `position: fixed` support is required which might limit the effectiveness.
 
-Note that some [mobile browsers](http://www.quirksmode.org/mobile/tableTouch.html) only run scroll events 
-once after a scroll has finished.  This means the effect won't nearly be as nice.  On mobile safari you can use native, prefixed, position sticky to get round this.  If this is an issue the following untested code might work.
+If avalible, particularly on iOS, always use the native version as it works a lot better on mobiles.
 
-```js
-$(document).on('touchmove', function() {
-	$stickyElement.trigger('scroll');
-} );
-```
+On iOS7 and some other browers the repositioning can only happen at the end of a scroll event, which kind of ruins the effect.  See [mobile support for the scroll event](http://www.quirksmode.org/mobile/tableTouch.html)
 
 ## Usage
 
@@ -55,6 +50,11 @@ Add some CSS for native support and to set the value of top
 	top: 1em; 
 	position: -webkit-sticky; 
 	position: sticky;
+}
+
+/* Disable the effect at a suitable breakpoint if desired */
+@media (max-width: 500px) {
+	.sticky {top: auto;}
 }
 
 ```

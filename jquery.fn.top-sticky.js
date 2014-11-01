@@ -40,6 +40,8 @@
 		};
 
 	var $window = $(window);
+	var windowHeight, scrollTop;
+	var lastScrollTop = -1;
 
 	// Elements to process when scrolling - these are elements that are actively being positioned
 	var $scroll = $();
@@ -60,19 +62,31 @@
 
 	// Update all elements
 	function update() {
+
 		var $collection = $scroll;
 		// Swap to the resize collection in a resize
 		if ( resizing ) {
 			$collection = $resize;
 		}
+
+		windowHeight = $window.height();
+		scrollTop = $window.scrollTop();
+
 		$collection.each( function() {
 			$.data( this, dataName )(resizing);
 		} );
-		running = resizing = false;
+
+		if ( lastScrollTop != scrollTop ) {
+			lastScrollTop = scrollTop;
+			requestAnimationFrame( update );
+		} else {
+			running = resizing = false;
+		}
 	}
 
 	// The scroll event - also called on a resize
 	function onScroll() {
+
 		if ( !running ) {
 			requestAnimationFrame( update );
 			running = true;
@@ -83,9 +97,9 @@
 	var scrollEventSet = false;
 	function setScrollEvent() {
 		if ( !$scroll.length ) {
-			$window.off( 'scroll' + dataName );
+			$window.off( 'scroll' + dataName + ' touchmove' + dataName );
 		} else if ( !scrollEventSet ) {
-			$window.on( 'scroll' + dataName, onScroll );
+			$window.on( 'scroll' + dataName + ' touchmove' + dataName, onScroll );
 			scrollEventSet = true;
 		}
 	}
@@ -144,7 +158,6 @@
 				if ( $el.is(':visible') ) {
 
 					$parent = parent ? $(parent) : $el.parent();
-					windowHeight = $window.height();
 
 					// Reset original size and position
 					reset();
@@ -208,7 +221,7 @@
 
 			var position = '';
 			var currentOffset = $el.offset();
-			var windowTop = $window.scrollTop() + top;
+			var windowTop = scrollTop + top;
 			var parentBottom = $parent.offset().top + parentHeight - parentPaddingBottom - height - marginBottom;
 
 			var calculatedTop = max( 
