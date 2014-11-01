@@ -1,7 +1,7 @@
 /* jshint laxbreak: true */
 
 /*!
- * jQuery.fn.top-sticky.js v0.2
+ * jQuery.fn.top-sticky.js v0.3
  * © 2014 Daniel Lewis github.com/mrdaniellewis/jquery.fn.top-sticky.js
  * MIT license
  */
