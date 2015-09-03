@@ -1,0 +1,20 @@
+{
+  "name": "jQuery.fn.top-sticky.js",
+  "version": "1.0.0",
+  "description": "A jQuery polyfill for position sticky",
+  "author": "Daniel Lewis",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrdaniellewis/jquery.fn.top-sticky.js.git"
+  },
+  "devDependencies": {
+    "gulp": "3.9.0",
+    "gulp-uglify": "^1.1.0",
+    "gulp-sourcemaps": "^1.5.0",
+    "gulp-rename": "^1.2.0"
+  },
+  "scripts": {
+    "build": "gulp"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "jQuery.fn.top-sticky.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/mrdaniellewis/jquery.fn.top-sticky.js",
+  "authors": [
+    "Daniel Lewis <github@mrdaniellewis.co.uk>"
+  ],
+  "description": "A jQuery polyfill for position sticky",
+  "main": "dist/jquery.fn.top-sticky.min",
+  "keywords": [
+    "sticky",
+    "position",
+    "jquery"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src"
+  ]
+}
