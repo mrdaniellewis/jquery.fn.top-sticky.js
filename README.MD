@@ -1,6 +1,6 @@
 # Position sticky polyfill
 
-This a basic [position sticky](http://caniuse.com/#feat=css-sticky) polyfill using jQuery.
+This a [position sticky](http://caniuse.com/#feat=css-sticky) polyfill using jQuery.
 
 ## What it does do
 
@@ -8,9 +8,9 @@ It supports "top" stickyness on block level elements in the same way native posi
 
 It reads the value of "top" directly from the CSS and supports this value being modified via media queries.
 
-It can test if the browser nativly supports position sticky.
+It can test if the browser natively supports position sticky.
 
-You can specifiy which element the stickyness should be contained within.  For native position sticky it is always contained within the parent element.
+You can specify which element the stickyness should be contained within.  For native position sticky it is always contained within the parent element.
 
 ## What it doesn't do
 
@@ -18,7 +18,7 @@ It doesn't support "bottom", "left" or "right" stickyness.
 
 It doesn't support elements with a position other than block.
 
-It doesn't check if an ancestor has overflow set to hidden or scroll.  In the native position sticky a scrollable ancestor will either disable the effect, or confine the effect to that scrollable area.
+It doesn't check if an ancestor has overflow set to hidden or scroll.  In the native position sticky, if there is a scrollable ancestor this will either disable the effect, or confine the effect to that scrollable area.
 
 It doesn't use relative positioning to create the effect.  Instead is uses fixed and absolute positioning.  This produces a much smoother effect than using position relative.
 
@@ -30,9 +30,9 @@ This works in IE8 plus.  It possibly also works in IE7.
 
 On a mobile some sort of `position: fixed` support is required which might limit the effectiveness.  It is probably best to turn the effect off on mobiles using media queries.
 
-If avalible, particularly on iOS, always use the native sticky positioning as it works a lot better.
+If available, particularly on iOS, always use the native sticky positioning as it works a lot better.
 
-On iOS7 and some other browers the repositioning can only happen at the end of a scroll event, which kind of ruins the effect.  See [mobile support for the scroll event](http://www.quirksmode.org/mobile/tableTouch.html)
+On iOS7 and some other browsers the repositioning can only happen at the end of a scroll event, which kind of ruins the effect.  See [mobile support for the scroll event](http://www.quirksmode.org/mobile/tableTouch.html)
 
 ## Usage
 
@@ -66,13 +66,13 @@ if ( !$.fn.stickfiy.support ) {
 }
 ```
 
-Remove the behavior with:
+Remove the behaviour with:
 
 ```js
 $('.js-sticky').unstickfiy();
 ```
 
-### Specifiying the container
+### Specifying the container
 
 For the native position sticky the element is contained within its parent (and not its offset parent like absolute positioning).
 
@@ -82,7 +82,7 @@ For some HTML this might be problematic.  In that case you can do the following 
 $('.js-sticky').stickfiy($('.container'));
 ```
 
-Note that this works terribly on an iphone and only tollerably on an ipad due to issues with how iOS handles fixed positioning.
+Note that this works terribly on an iphone and only tolerably on an ipad due to issues with how iOS handles fixed positioning.
 
 ### Notes
 
@@ -93,12 +93,11 @@ An element's position is recalculated on a scroll event on the window.
 An element's size, its parent's size, its natural position and whether the element is visible 
 are only recalculated on a resize event on the window or element.
 
-If a script is manipulating the size, position or visibility of elements you may need to trigger a 
-resize on the window or element to recalcuate the size and position.
+If a script is manipulating the size, position or visibility of elements you may can trigger a 
+`resize` event on the window or element to recalculate the size and position.
 
-In order to give the smoothest possible performance, the script transitions the element between position fixed,
-position absolute and positino static.  This greatly reduces the number of repositions require.  However, this takes the element out of the document flow causing the content to jump as it adjusts.  To work round this the script will insert a hidden "ghost" element in its place with the same dimensions.
+In order to give the smoothest possible performance, the script transitions the element between position fixed, position absolute and position static.  This greatly reduces the number of repositions require.  However, this takes the element out of the document flow causing the content to jump as it adjusts.  To work round this the script will insert a hidden "ghost" element in its place with the same dimensions.
 
 ## License
 
-Released under the MIT license.
+Released under the ISC license.
